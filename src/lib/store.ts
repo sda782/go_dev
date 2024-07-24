@@ -6,7 +6,7 @@ export const board: Writable<{ cells: string[] }> = writable({
 export const hand: Writable<{
   cards: string[];
 }> = writable({
-  cards: [],
+  cards: [""],
 });
 
 export const life: Writable<number> = writable(4);
