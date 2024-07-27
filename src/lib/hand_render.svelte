@@ -1,10 +1,11 @@
 <script lang="ts">
+  import { get_image_path } from "./game";
   import { hand } from "./store";
 </script>
 
 {#if $hand.cards.length > 0}
   <div class="hand">
-    {$hand.cards[0]}
+    <img src={get_image_path($hand.cards[0])} alt="" />
   </div>
 {/if}
 

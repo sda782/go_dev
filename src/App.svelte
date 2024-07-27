@@ -17,6 +17,11 @@
   $: if ($hand.cards.length == 0 || $life == 0) {
     window.location.reload();
   }
+  $: if ($hand.cards[0].endsWith("11")) {
+    $life -= 1;
+    $hand.cards.splice(0, 1);
+    $hand.cards = [...$hand.cards];
+  }
 </script>
 
 <BoardRender />

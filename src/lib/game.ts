@@ -3,6 +3,33 @@ type gg = {
   board: string[];
 };
 
+export const months: Array<string> = [
+  "jan",
+  "feb",
+  "mar",
+  "apr",
+  "may",
+  "jun",
+  "jul",
+  "aug",
+  "sep",
+  "oct",
+  "nov",
+  "dec",
+];
+
+export function get_image_path(val: string): string {
+  const [monthStr, monthIndexStr] = val.split(":");
+  const monthIndex = parseInt(monthIndexStr);
+  const monthType = months[monthIndex - 1];
+
+  if (!monthType) {
+    return "";
+  }
+
+  return `/cards/${monthType} (${monthStr}).jpg`;
+}
+
 export function generate_game(): gg {
   var d = [];
   for (let i = 0; i < 4; i++) {

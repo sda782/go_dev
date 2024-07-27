@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { get_image_path } from "./game";
   import { board, hand, life } from "./store";
 
   export var cell: string;
@@ -11,11 +12,7 @@
       let item_index = $board.cells.indexOf(cell);
       let old_card = $board.cells[item_index];
       $hand.cards.push(old_card);
-      if (!card_from_hand.endsWith("11")) {
-        $board.cells[item_index] = card_from_hand;
-      } else {
-        $life -= 1;
-      }
+      $board.cells[item_index] = card_from_hand;
       played = true;
     }
   }
@@ -24,7 +21,7 @@
 <div class="card">
   {#if played}
     {#if cell}
-      <span>{cell}</span>
+      <img src={get_image_path(cell)} alt="" />
     {/if}
   {:else}
     <span on:click={() => play_card()}>✾</span>
