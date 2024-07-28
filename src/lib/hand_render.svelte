@@ -4,10 +4,9 @@
 </script>
 
 {#if $hand.cards.length > 0}
-
   <div class="hand">
     <span class="month-number">{$hand.cards[0].split(":")[1]}</span>
-    <img src={get_image_path($hand.cards[0])} alt="" />
+    <img src={get_image_path($hand.cards[0])} alt="" width="75%" />
   </div>
 {/if}
 
@@ -15,14 +14,13 @@
   .hand {
     position: fixed;
     bottom: 0px;
-    right: 0px;    
+    right: -4%;
   }
-  .month-number{
+  .month-number {
     position: absolute;
-    top: -25%;
-    right: 5px;
+    top: -33%;
+    left: 55px;
     z-index: 99;
     font-size: 2.5em;
   }
-
 </style>
