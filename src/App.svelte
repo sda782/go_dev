@@ -4,6 +4,7 @@
   import { generate_game } from "./lib/game";
   import { onMount } from "svelte";
   import { board, hand, life } from "./lib/store";
+    import Life from "./lib/life.svelte";
 
   onMount(() => {
     for (let i = 0; i < 44; i++) {
@@ -18,28 +19,17 @@
     window.location.reload();
   }
   $: if ($hand.cards[0].endsWith("11")) {
-    $life -= 1;
-    $hand.cards.splice(0, 1);
-    $hand.cards = [...$hand.cards];
+    setTimeout(()=>{
+      $life -= 1;
+      $hand.cards.splice(0, 1);
+      $hand.cards = [...$hand.cards];
+    },1000)
+    
   }
 </script>
 
 <BoardRender />
-<div class="life">
-  {#each { length: $life } as _l}
-    <span>♡</span>
-  {/each}
-</div>
+<Life/>
 <HandRender />
 
-<style>
-  .life {
-    position: fixed;
-    bottom: 11%;
-    text-align: center;
-    width: calc(100% - 4px);
-    height: 10%;
-    padding-top: calc(5% + 0.5em);
-    font-size: 3em;
-  }
-</style>
+

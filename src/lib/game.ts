@@ -27,7 +27,7 @@ export function get_image_path(val: string): string {
     return "";
   }
 
-  return `/cards/${monthType} (${monthStr}).jpg`;
+  return `/cards/${monthType} (${monthStr}).png`;
 }
 
 export function generate_game(): gg {

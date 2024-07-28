@@ -6,13 +6,14 @@
   var played: boolean = false;
   function play_card() {
     if (played) return;
+    if ($hand.cards[0].endsWith("11")) return;
     let card_from_hand = $hand.cards.shift();
     if (card_from_hand) {
       $hand.cards = [...$hand.cards];
-      let item_index = $board.cells.indexOf(cell);
-      let old_card = $board.cells[item_index];
+      let card_index = $board.cells.indexOf(cell);
+      let old_card = $board.cells[card_index];
       $hand.cards.push(old_card);
-      $board.cells[item_index] = card_from_hand;
+      $board.cells[card_index] = card_from_hand;
       played = true;
     }
   }
@@ -21,18 +22,22 @@
 <div class="card">
   {#if played}
     {#if cell}
-      <img src={get_image_path(cell)} alt="" />
+      <img src={get_image_path(cell)}  alt="" />
     {/if}
   {:else}
-    <span on:click={() => play_card()}>✾</span>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+    <img on:click={() => play_card()}  src="/cards/card_back.png" alt="" />
   {/if}
 </div>
 
 <style>
   .card {
-    flex: 1 0 21%;
-    border: 2px white solid;
+    flex: 1 0 9%;
     font-size: 2.5em;
     min-height: 6vh;
+  }
+  .card>img{
+    width: 90%;
   }
 </style>

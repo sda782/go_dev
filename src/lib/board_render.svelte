@@ -17,6 +17,6 @@
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
-    border: 2px white solid;
+    width: 85%;
   }
 </style>
